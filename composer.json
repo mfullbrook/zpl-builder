@@ -1,0 +1,42 @@
+{
+    "name": "mfullbrook/zpl-builder",
+    "description": "Create ZPL for Zebra Label printers using elegant PHP API",
+    "keywords": [
+        "mfullbrook",
+        "zpl-builder"
+    ],
+    "homepage": "https://github.com/mfullbrook/zpl-builder",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Mark Fullbrook",
+            "email": "mark@fullbrook.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mfullbrook\\ZplBuilder\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mfullbrook\\ZplBuilder\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
