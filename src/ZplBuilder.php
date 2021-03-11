@@ -69,7 +69,7 @@ class ZplBuilder
     }
 
     /**
-     * Set the print, slew and backfeed speeds 
+     * Set the print, slew and backfeed speeds
      */
     public function printRate($print, $slew = null, $backfeed = null)
     {
@@ -186,7 +186,7 @@ class ZplBuilder
         return $this;
     }
 
-    public function textBlock(string $message, $width, $lines = 1, $align = 'L', $font = null)
+    public function textBlock(string $message, $width, $lines = 1, $align = 'L', $font = null, $reversed = false)
     {
         if ($width === 'full') {
             $width = $this->maxPrintWidth - $this->x;
@@ -194,12 +194,19 @@ class ZplBuilder
 
         $this->field(0, 0, [
             ['FB', $this->dots($width), $lines, 0, $align, 0],
+            $reversed ? ['FR'] : null,
             $this->convertFontArgumentToCommand($font),
             ['FD', $message]
         ]);
-        
+
         return $this;
     }
+
+    public function reversedTextBlock(string $message, $width, $lines = 1, $align = 'L', $font = null)
+    {
+        return $this->textBlock($message, $width, $lines, $align, $font, true);
+    }
+
 
     protected function convertFontArgumentToCommand($font)
     {
